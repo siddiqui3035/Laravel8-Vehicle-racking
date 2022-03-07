@@ -3,6 +3,10 @@
 ## About Laravel
 Laravel-8 Vehicle tracking application using Google Maps Api and Pusher.
 
+## Install new laravel 8 project
+
+## 
+
 
 
 
