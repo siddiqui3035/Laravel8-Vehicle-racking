@@ -33,40 +33,45 @@
     <body class="antialiased">
         <button onclick="updatePosition()">Update Position</button>
         <div id="map"></div>
-
+        
+    <script src="{{ asset('js/app.js')}}"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe0WoUUFzLu7VMVlJKnjqo48bO_AuDoq8&callback=initMap&v=weekly"async>
     </script>
     <script>
         let map;
-        let marker;
+        let markerl;
 
         // Initialize and add the map
         function initMap() {
         // The location of Uluru
         const uluru = { lat: -25.344, lng: 131.036 };
         // The map, centered at Uluru
-        const map = new google.maps.Map(document.getElementById("map"), {
+        map = new google.maps.Map(document.getElementById("map"), {
             zoom: 18,
             center: uluru,
         });
         // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
             position: uluru,
             map: map,
         });
         }
         
-        function updatePosition()
+        function updatePosition(newLat, newLng)
         {
             // alert('Its work');
-            const latLng = { lat: -25.344, lng: 131.036 };
+            const latLng = { lat: newLat, lng: newLng};
+            // alert(latLng);
             marker.setPosition(latLng);
+            map.setCenter(latLng);
         }
-        // function changeMarkerPosition(marker) {
-        //     var latlng = new google.maps.LatLng(-24.397, 140.644);
-        //     marker.setPosition(latlng);
-        // }
+
+        Echo.channel('truckerApp')
+        .listen('CarMoved', (e) => {
+            // console.log(e);
+            updatePosition(e.lat, e.lng);
+        });
         </script>
     </body>
 </html>

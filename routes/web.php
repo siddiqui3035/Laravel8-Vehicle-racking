@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\CarMoved;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,10 @@ Route::get('/app', function () {
     // dd('route is working');
     return view('app');
 });
+
+Route::get('/move', function () {
+    event(new CarMoved(22.845640, 89.540329));
+    // event(new CarMoved(-24.344, 131.036));
+    // event(new CarMoved(-12.344, 111.036));
+});
+
