@@ -1,2 +1,2 @@
 require('./bootstrap');
-console.log('App.js included');
+// console.log('App.js included');
