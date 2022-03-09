@@ -25,10 +25,10 @@ https://developers.google.com/maps/documentation/javascript/overview
 ```
 ### copy below javascript, css, html;
 ```js
-let map: google.maps.Map;
+let map;
 
-function initMap(): void {
-  map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 8,
   });
@@ -53,7 +53,48 @@ body {
 &
 ```html
 <div id="map"></div>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly"async>
+</script>
 ```
+
+## Go to below link for create Api:
+```links
+https://developers.google.com/maps/documentation/javascript/get-api-key
+```
+Go to Creating API keys and click Go to credential page and click create project. After create a progect click on goole map js api and create api credential and paste on below script teg;
+```js
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly"async>
+    </script>
+
+```
+
+## Now add a marker on map;
+```links
+https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+```
+&
+copy below code and paste on app.blade.php
+```js
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.036 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
+}
+```
+
+
 
 ## Now create a blade file on resource/views:
 ```html
@@ -93,13 +134,17 @@ body {
     <body class="antialiased">
 
         <div id="map"></div>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly"async>
+        </script>
        <script>
-        let map: google.maps.Map;
-            function initMap(): void {
-                map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-                    center: { lat: -34.397, lng: 150.644 },
-                    zoom: 8,
-                });
+            let map;
+
+            function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
+            });
             }
        </script>
     </body>

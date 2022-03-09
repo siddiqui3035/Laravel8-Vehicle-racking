@@ -31,17 +31,42 @@
         </style>
     </head>
     <body class="antialiased">
+        <button onclick="updatePosition()">Update Position</button>
         <div id="map"></div>
 
-
-    <script>
-        let map: google.maps.Map;
-        function initMap(): void {
-            map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 8,
-            });
-        }
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe0WoUUFzLu7VMVlJKnjqo48bO_AuDoq8&callback=initMap&v=weekly"async>
     </script>
+    <script>
+        let map;
+        let marker;
+
+        // Initialize and add the map
+        function initMap() {
+        // The location of Uluru
+        const uluru = { lat: -25.344, lng: 131.036 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 18,
+            center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+        });
+        }
+        
+        function updatePosition()
+        {
+            // alert('Its work');
+            const latLng = { lat: -25.344, lng: 131.036 };
+            marker.setPosition(latLng);
+        }
+        // function changeMarkerPosition(marker) {
+        //     var latlng = new google.maps.LatLng(-24.397, 140.644);
+        //     marker.setPosition(latlng);
+        // }
+        </script>
     </body>
 </html>
