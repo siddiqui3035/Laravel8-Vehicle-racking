@@ -136,7 +136,7 @@ function initMap() {
         
     <script src="{{ asset('js/app.js')}}"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe0WoUUFzLu7VMVlJKnjqo48bO_AuDoq8&callback=initMap&v=weekly"async>
+        src="https://maps.googleapis.com/maps/api/js?key=your app keygsat"async>
     </script>
     <script>
         let map;
